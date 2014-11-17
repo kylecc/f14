@@ -72,13 +72,8 @@ void HashTable::add(const String key, const int d) {
   Hash h(key);
   int index = h.hash() % size;
   check(inTable(key), "HashTable::add(String, int) : Duplicate key");
-  if(data[index] == NULL) {
-    data[index] = new LinkList(key, d);
-    check(data[index] == NULL, "HashTable::add(String, int) : Out of memory");
-  } else {
-    data[index] = new LinkList(key, d, data[index]);
-    check(data[index] == NULL, "HashTable::add(String, int) : Out of memory");
-  }
+  data[index] = new LinkList(key, d, data[index]);
+  check(data[index] == NULL, "HashTable::add(String, int) : Out of memory");
 }
 
 HashTable& HashTable::remove(const String key) {
