@@ -4,7 +4,7 @@ HashTable::HashTable(const int s) {
   check(s <= 0, "HashTable::HashTable(int) : Invalid size");
   size = s;
   data = new LinkList*[size];
-  check(data == NULL, "HashTable::HashTable(int) : Heap overflow");
+  check(data == NULL, "HashTable::HashTable(int) : Out of memory");
   for(int i = 0; i < size; ++i) {
     data[i] = NULL;
   }
