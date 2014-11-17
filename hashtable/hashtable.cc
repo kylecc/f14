@@ -1,6 +1,6 @@
 #include "hashtable.h"
 
-HashTable::HashTable(int s) {
+HashTable::HashTable(const int s) {
   check(s <= 0, "HashTable::HashTable(int) : Invalid size");
   size = s;
   data = new LinkList*[size];
@@ -62,7 +62,7 @@ HashTable& HashTable::operator= (const HashTable& h) {
   for(int i = 0; i < size; ++i) {
     LinkList* ptr = h.data[i];
     while(ptr != NULL) {
-      data[i] = new LinkList(ptr->key, 0);
+      data[i] = new LinkList(ptr->key, ptr->data);
     }
   }
   return *this;
